@@ -1,0 +1,8 @@
+0ff0 //mov ff, r0
+0ee1 //mov ee, r1
+6013 //jeq r0, r1, 3
+7180 //st r1, mem80
+3000 //halt
+7181 //st r1, mem81
+3000 //halt
+

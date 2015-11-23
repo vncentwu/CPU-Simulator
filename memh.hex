@@ -1,0 +1,5 @@
+4040 // ldr0, m04
+7002 // st r0, mem2
+3000 // halt
+3000 // halt
+0ff1 // mov  ff, r1

@@ -1,0 +1,61 @@
+Due date: Sunday 10/18/2015 @11:59pm
+
+Objective: Branch prediction
+
+  Add a branch predictor. Half of your score will depend on having a functioning
+  predictor and the other half will depend on how your design performs
+  relative to your peers.
+
+Assignment: 
+
+You're given an inefficient multi-cycle implementation of our CPU. Your job
+is it make it run as fast as you can by adding a branch predictor.
+
+Please edit the file REPORT.txt to show a comparison of your p6
+and p7 results and comment on the impact of the branch
+predictor for each test.
+
+My implementation is embarrassingly slow and you have plenty of room for
+improvement.
+
+- instruction set
+
+  encoding          instruction   description
+    
+  0000iiiiiiiitttt  mov i,t       regs[t] = i; pc += 1;
+  0001aaaabbbbtttt  add a,b,t     regs[t] = regs[a] + regs[b]; pc += 1;
+  0010jjjjjjjjjjjj  jmp j         pc = j;
+  0011000000000000  halt          <stop fetching instructions>
+  0100iiiiiiiitttt  ld i,t        regs[t] = mem[i]; pc += 1;
+  0101aaaabbbbtttt  ldr a,b,t     regs[t] = mem[regs[a]+regs[b]]; pc += 1;
+  0110aaaabbbbdddd  jeq a,b,t     if (regs[a] == regs[b]) pc += d
+                                  else pc += 1;
+  0111aaaassssssss  st s,a        mem[s] = regs[a]; pc += 1;
+
+Files you can change
+~~~~~~~~~~~~~~~~~~~~
+
+cpu.v contains the implementation. You are required to use the provided
+memory (mem.v), register file (regs.v), and clock (clock.v)
+
+Files to leave alone
+~~~~~~~~~~~~~~~~~~~~
+
+Makefile, clock.v, mem.v, regs.v, counter.v, test.ok, mem.hex
+
+To compile
+~~~~~~~~~~
+
+    make
+
+To run
+~~~~~~
+
+    make run
+
+Will also produce cpu.vcd which can be viewed in gtkwave
+
+To test
+~~~~~~~
+
+    make test
